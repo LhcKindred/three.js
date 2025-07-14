@@ -1,22 +1,22 @@
 /**
- * LDraw object packer
+ * lDraw object packer
  *
  * Usage:
  *
- * - Download official parts library from LDraw.org and unzip in a directory (e.g. ldraw/)
+ * - Download official parts library from lDraw.org and unzip in a directory (e.g. lDraw/)
  *
- * - Download your desired model file and place in the ldraw/models/ subfolder.
+ * - Download your desired model file and place in the lDraw/models/ subfolder.
  *
- * - Place this script also in ldraw/
+ * - Place this script also in lDraw/
  *
- * - Issue command 'node packLDrawModel models/<modelFileName>'
+ * - Issue command 'node packlDrawModel models/<modelFileName>'
  *
- * The packed object will be in ldraw/models/<modelFileName>_Packed.mpd and will contain all the object subtree as embedded files.
+ * The packed object will be in lDraw/models/<modelFileName>_Packed.mpd and will contain all the object subtree as embedded files.
  *
  *
  */
 
-const ldrawPath = './';
+const lDrawPath = './';
 const materialsFileName = 'LDConfig.ldr';
 
 
@@ -25,14 +25,14 @@ import path from 'path';
 
 if ( process.argv.length !== 3 ) {
 
-	console.log( 'Usage: node packLDrawModel <modelFilePath>' );
+	console.log( 'Usage: node packlDrawModel <modelFilePath>' );
 	process.exit( 0 );
 
 }
 
 const fileName = process.argv[ 2 ];
 
-const materialsFilePath = path.join( ldrawPath, materialsFileName );
+const materialsFilePath = path.join( lDrawPath, materialsFileName );
 
 console.log( 'Loading materials file "' + materialsFilePath + '"...' );
 const materialsContent = fs.readFileSync( materialsFilePath, { encoding: 'utf8' } );
@@ -118,7 +118,7 @@ function parseObject( fileName, isRoot ) {
 
 		}
 
-		let absoluteObjectPath = path.join( ldrawPath, fileName );
+		let absoluteObjectPath = path.join( lDrawPath, fileName );
 
 		try {
 
@@ -128,7 +128,7 @@ function parseObject( fileName, isRoot ) {
 		} catch ( e ) {
 
 			prefix = 'parts/';
-			absoluteObjectPath = path.join( ldrawPath, prefix, fileName );
+			absoluteObjectPath = path.join( lDrawPath, prefix, fileName );
 
 			try {
 
@@ -138,7 +138,7 @@ function parseObject( fileName, isRoot ) {
 			} catch ( e ) {
 
 				prefix = 'p/';
-				absoluteObjectPath = path.join( ldrawPath, prefix, fileName );
+				absoluteObjectPath = path.join( lDrawPath, prefix, fileName );
 
 				try {
 
@@ -150,7 +150,7 @@ function parseObject( fileName, isRoot ) {
 					try {
 
 						prefix = 'models/';
-						absoluteObjectPath = path.join( ldrawPath, prefix, fileName );
+						absoluteObjectPath = path.join( lDrawPath, prefix, fileName );
 
 						objectContent = fs.readFileSync( absoluteObjectPath, { encoding: 'utf8' } );
 						break;
