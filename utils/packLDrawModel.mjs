@@ -90,7 +90,7 @@ console.log( 'Done.' );
 
 function parseObject( fileName, isRoot ) {
 
-	// Returns the located path for fileName or null if not found
+	// Returns the located path for fileName or null if not found.
 
 	console.log( 'Adding "' + fileName + '".' );
 
