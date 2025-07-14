@@ -223,16 +223,16 @@ function parseObject( fileName, isRoot ) {
 
 			// Embedded object was found, add to path map
 
-			const subobjectFileName = line.substring( charIndex ).trim().replace( /\\/g, '/' );
+			const subObjectFileName = line.substring( charIndex ).trim().replace( /\\/g, '/' );
 
-			if ( subobjectFileName ) {
+			if ( subObjectFileName ) {
 
 				// Find name in path cache
-				const subobjectPath = pathMap[ subobjectFileName ];
+				const subObjectPath = pathMap[ subObjectFileName ];
 
-				if ( ! subobjectPath ) {
+				if ( ! subObjectPath ) {
 
-					pathMap[ subobjectFileName ] = subobjectFileName;
+					pathMap[ subObjectFileName ] = subObjectFileName;
 
 				}
 
@@ -242,7 +242,7 @@ function parseObject( fileName, isRoot ) {
 
 		if ( line.startsWith( '1 ' ) ) {
 
-			// Subobject, add it
+			// subObject, add it
 			charIndex = 2;
 
 			// Skip material, position and transform
@@ -264,23 +264,23 @@ function parseObject( fileName, isRoot ) {
 
 			}
 
-			const subobjectFileName = line.substring( charIndex ).trim().replace( /\\/g, '/' );
+			const subObjectFileName = line.substring( charIndex ).trim().replace( /\\/g, '/' );
 
-			if ( subobjectFileName ) {
+			if ( subObjectFileName ) {
 
 				// Find name in path cache
-				let subobjectPath = pathMap[ subobjectFileName ];
+				let subObjectPath = pathMap[ subObjectFileName ];
 
-				if ( ! subobjectPath ) {
+				if ( ! subObjectPath ) {
 
 					// Add new object
-					subobjectPath = parseObject( subobjectFileName );
+					subObjectPath = parseObject( subObjectFileName );
 
 				}
 
-				pathMap[ subobjectFileName ] = subobjectPath ? subobjectPath : subobjectFileName;
+				pathMap[ subObjectFileName ] = subObjectPath ? subObjectPath : subObjectFileName;
 
-				processedObjectContent += line.substring( 0, charIndex ) + pathMap[ subobjectFileName ] + '\n';
+				processedObjectContent += line.substring( 0, charIndex ) + pathMap[ subObjectFileName ] + '\n';
 
 			}
 
