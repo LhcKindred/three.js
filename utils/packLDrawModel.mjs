@@ -159,7 +159,7 @@ function parseObject( fileName, isRoot ) {
 
 						if ( attempt === 1 ) {
 
-							// The file has not been found, add to list of not found
+							// The file has not been found, add to list of not found.
 							listOfNotFound.push( originalFileName );
 
 						}
