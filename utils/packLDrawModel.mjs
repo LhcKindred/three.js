@@ -185,7 +185,7 @@ function parseObject( fileName, isRoot ) {
 
 	if ( objectContent.indexOf( '\r\n' ) !== - 1 ) {
 
-		// This is faster than String.split with regex that splits on both
+		// This is faster than String.split with regex that splits on both.
 		objectContent = objectContent.replace( /\r\n/g, '\n' );
 
 	}
