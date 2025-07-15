@@ -216,7 +216,7 @@ function parseObject( fileName, isRoot ) {
 
 			if ( i === 0 ) {
 
-				// Ignore first line FILE meta directive
+				// Ignore first line FILE meta directive.
 				continue;
 
 			}
